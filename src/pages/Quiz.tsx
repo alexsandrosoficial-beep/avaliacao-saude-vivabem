@@ -6,7 +6,6 @@ import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { playClickSound, playProgressSound, playSuccessSound } from "@/utils/sounds";
 
 interface Question {
   id: string;
@@ -193,15 +192,12 @@ const Quiz = () => {
 
   const handleAnswer = (value: string) => {
     setAnswers({ ...answers, [currentQ.id]: value });
-    playClickSound();
   };
 
   const handleNext = () => {
     if (currentQuestion < questions.length - 1) {
-      playProgressSound();
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      playSuccessSound();
       const scores = questions.map((q) => {
         const selectedOption = q.options.find((opt) => opt.value === answers[q.id]);
         return selectedOption?.score || 0;
@@ -216,7 +212,6 @@ const Quiz = () => {
 
   const handleBack = () => {
     if (currentQuestion > 0) {
-      playClickSound();
       setCurrentQuestion(currentQuestion - 1);
     }
   };
