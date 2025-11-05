@@ -11,15 +11,20 @@ export const playClickSound = () => {
   oscillator.connect(gainNode);
   gainNode.connect(audioContext.destination);
   
-  // Som mais suave e alegre - nota musical C6
-  oscillator.frequency.value = 1046.50;
+  // Som suave e dinâmico com sweep ascendente
+  oscillator.frequency.value = 800; // Começa em G5
   oscillator.type = 'sine';
   
-  gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
-  gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
+  // Envelope suave com ataque e release graduais
+  gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+  gainNode.gain.linearRampToValueAtTime(0.12, audioContext.currentTime + 0.02); // Ataque suave
+  gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.25); // Release longo
+  
+  // Sweep de frequência suave para cima (G5 para C6)
+  oscillator.frequency.exponentialRampToValueAtTime(1046.50, audioContext.currentTime + 0.12);
   
   oscillator.start(audioContext.currentTime);
-  oscillator.stop(audioContext.currentTime + 0.15);
+  oscillator.stop(audioContext.currentTime + 0.25);
 };
 
 export const playSuccessSound = () => {
