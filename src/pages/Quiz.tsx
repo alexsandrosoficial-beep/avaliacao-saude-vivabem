@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
+import { toast } from "sonner";
 
 interface Question {
   id: string;
@@ -191,22 +192,46 @@ const Quiz = () => {
   const currentQ = questions[currentQuestion];
 
   const handleAnswer = (value: string) => {
+    // Validate that the value exists in the current question options
+    const isValidOption = currentQ.options.some(opt => opt.value === value);
+    if (!isValidOption) {
+      toast.error("Opção inválida selecionada");
+      return;
+    }
     setAnswers({ ...answers, [currentQ.id]: value });
   };
 
   const handleNext = () => {
+    // Validate current answer exists
+    if (!answers[currentQ.id]) {
+      toast.error("Por favor, selecione uma opção antes de continuar");
+      return;
+    }
+
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
+      // Calculate scores with validation
       const scores = questions.map((q) => {
-        const selectedOption = q.options.find((opt) => opt.value === answers[q.id]);
-        return selectedOption?.score || 0;
+        const answer = answers[q.id];
+        const selectedOption = q.options.find((opt) => opt.value === answer);
+        
+        // Validate each answer exists and is valid
+        if (!answer || !selectedOption) {
+          return 0;
+        }
+        
+        return selectedOption.score;
       });
+      
       const totalScore = scores.reduce((a, b) => a + b, 0);
       const maxScore = questions.length * 10;
       const percentage = Math.round((totalScore / maxScore) * 100);
 
-      navigate("/results", { state: { percentage, answers } });
+      // Validate percentage is within bounds
+      const validPercentage = Math.max(0, Math.min(100, percentage));
+
+      navigate("/results", { state: { percentage: validPercentage, answers } });
     }
   };
 
@@ -240,17 +265,33 @@ const Quiz = () => {
 
           <RadioGroup value={answers[currentQ.id]} onValueChange={handleAnswer}>
             <div className="space-y-4">
-              {currentQ.options.map((option) => (
-                <div key={option.value} className="flex items-center space-x-3">
-                  <RadioGroupItem value={option.value} id={option.value} />
-                  <Label
-                    htmlFor={option.value}
-                    className="flex-1 cursor-pointer p-4 rounded-lg border-2 border-border hover:border-primary transition-all"
-                  >
-                    {option.label}
-                  </Label>
-                </div>
-              ))}
+              {currentQ.options.map((option) => {
+                const isSelected = answers[currentQ.id] === option.value;
+                return (
+                  <div key={option.value} className="relative">
+                    <RadioGroupItem 
+                      value={option.value} 
+                      id={option.value}
+                      className="peer sr-only"
+                    />
+                    <Label
+                      htmlFor={option.value}
+                      className={`flex items-center justify-between cursor-pointer p-4 rounded-lg border-2 transition-all ${
+                        isSelected
+                          ? "border-primary bg-primary/10 shadow-md"
+                          : "border-border hover:border-primary/50 hover:bg-accent/50"
+                      }`}
+                    >
+                      <span className={isSelected ? "font-semibold text-primary" : ""}>
+                        {option.label}
+                      </span>
+                      {isSelected && (
+                        <CheckCircle2 className="w-5 h-5 text-primary animate-in zoom-in-50 duration-200" />
+                      )}
+                    </Label>
+                  </div>
+                );
+              })}
             </div>
           </RadioGroup>
 
