@@ -8,10 +8,11 @@ const Index = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-hero">
-      {/* Hero Section */}
-      <section className="py-20 px-4 text-center">
-        <div className="max-w-4xl mx-auto animate-fade-in">
+    <div className="min-h-screen wellness-background">
+      <div className="content-wrapper">
+        {/* Hero Section */}
+        <section className="py-20 px-4 text-center">
+          <div className="max-w-4xl mx-auto animate-fade-in">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
             <Sparkles className="w-4 h-4" />
             <span className="text-sm font-medium">Plataforma de Bem-Estar Inteligente</span>
@@ -108,6 +109,7 @@ const Index = () => {
           </Card>
         </div>
       </section>
+      </div>
     </div>
   );
 };

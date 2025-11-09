@@ -50,11 +50,14 @@ export default {
       },
       backgroundImage: {
         'gradient-hero': 'var(--gradient-hero)',
+        'gradient-wellness': 'var(--gradient-wellness)',
         'gradient-card': 'var(--gradient-card)',
+        'gradient-quiz': 'var(--gradient-quiz)',
       },
       boxShadow: {
         'soft': 'var(--shadow-soft)',
         'medium': 'var(--shadow-medium)',
+        'glow': 'var(--shadow-glow)',
       },
       transitionProperty: {
         'smooth': 'var(--transition-smooth)',

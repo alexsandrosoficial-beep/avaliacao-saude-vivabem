@@ -242,8 +242,8 @@ const Quiz = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-hero py-12 px-4">
-      <div className="max-w-2xl mx-auto">
+    <div className="min-h-screen quiz-background py-12 px-4">
+      <div className="content-wrapper max-w-2xl mx-auto">
         <div className="mb-8 animate-fade-in">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-sm font-medium text-muted-foreground">
