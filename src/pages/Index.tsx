@@ -3,12 +3,14 @@ import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { Heart, Sparkles, TrendingUp, Shield } from "lucide-react";
 import { playClickSound } from "@/utils/sounds";
+import WellnessDecorations from "@/components/WellnessDecorations";
 
 const Index = () => {
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen wellness-background">
+      <WellnessDecorations />
       <div className="content-wrapper">
         {/* Hero Section */}
         <section className="py-20 px-4 text-center">
