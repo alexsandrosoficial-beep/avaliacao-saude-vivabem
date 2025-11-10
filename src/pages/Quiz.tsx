@@ -7,7 +7,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
-import WellnessDecorations from "@/components/WellnessDecorations";
 
 interface Question {
   id: string;
@@ -247,7 +246,6 @@ const Quiz = () => {
 
   return (
     <div className="min-h-screen quiz-background py-12 px-4">
-      <WellnessDecorations />
       <div className="content-wrapper max-w-2xl mx-auto">
         <div className="mb-8 animate-fade-in">
           <div className="flex items-center justify-between mb-4">

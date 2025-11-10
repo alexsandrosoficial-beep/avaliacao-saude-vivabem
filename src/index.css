@@ -38,16 +38,17 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
-    --gradient-hero: linear-gradient(135deg, hsl(150 70% 90% / 0.8) 0%, hsl(195 70% 90% / 0.6) 50%, hsl(280 60% 92% / 0.4) 100%);
-    --gradient-wellness: radial-gradient(circle at 20% 50%, hsl(150 60% 48% / 0.15) 0%, transparent 50%), 
-                         radial-gradient(circle at 80% 80%, hsl(195 65% 55% / 0.15) 0%, transparent 50%),
-                         radial-gradient(circle at 40% 90%, hsl(35 90% 60% / 0.1) 0%, transparent 40%);
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 100% / 0.9), hsl(150 40% 98% / 0.95));
-    --gradient-quiz: linear-gradient(180deg, hsl(150 60% 95%) 0%, hsl(195 60% 96%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(150 70% 90% / 0.9) 0%, hsl(195 70% 90% / 0.7) 50%, hsl(280 60% 92% / 0.5) 100%);
+    --gradient-wellness: radial-gradient(circle at 20% 50%, hsl(150 60% 48% / 0.2) 0%, transparent 50%), 
+                         radial-gradient(circle at 80% 80%, hsl(195 65% 55% / 0.2) 0%, transparent 50%),
+                         radial-gradient(circle at 40% 90%, hsl(35 90% 60% / 0.15) 0%, transparent 40%);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100% / 0.95), hsl(150 40% 98% / 1));
+    --gradient-quiz: linear-gradient(180deg, hsl(150 60% 96%) 0%, hsl(195 60% 97%) 100%);
     
-    --shadow-soft: 0 2px 20px hsl(150 60% 48% / 0.1);
-    --shadow-medium: 0 8px 30px hsl(150 60% 48% / 0.15);
-    --shadow-glow: 0 0 40px hsl(150 60% 48% / 0.2);
+    --shadow-soft: 0 4px 24px hsl(150 60% 48% / 0.12);
+    --shadow-medium: 0 8px 40px hsl(150 60% 48% / 0.18);
+    --shadow-glow: 0 0 50px hsl(150 60% 48% / 0.25);
+    --shadow-card: 0 2px 16px hsl(150 60% 48% / 0.08);
     
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -100,7 +101,11 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
   }
 }
 
