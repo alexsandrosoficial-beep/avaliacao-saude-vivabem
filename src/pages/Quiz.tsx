@@ -188,6 +188,7 @@ const Quiz = () => {
   const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [animationDirection, setAnimationDirection] = useState<"forward" | "backward">("forward");
 
   const progress = ((currentQuestion + 1) / questions.length) * 100;
   const currentQ = questions[currentQuestion];
@@ -210,6 +211,7 @@ const Quiz = () => {
     }
 
     if (currentQuestion < questions.length - 1) {
+      setAnimationDirection("forward");
       setCurrentQuestion(currentQuestion + 1);
     } else {
       // Calculate scores with validation
@@ -238,6 +240,7 @@ const Quiz = () => {
 
   const handleBack = () => {
     if (currentQuestion > 0) {
+      setAnimationDirection("backward");
       setCurrentQuestion(currentQuestion - 1);
     }
   };
@@ -256,7 +259,14 @@ const Quiz = () => {
           <Progress value={progress} className="h-2" />
         </div>
 
-        <Card className="p-8 shadow-medium animate-fade-in bg-gradient-card">
+        <Card 
+          key={currentQuestion}
+          className={`p-8 shadow-medium bg-gradient-card ${
+            animationDirection === "forward" 
+              ? "animate-in fade-in slide-in-from-right-4 duration-300" 
+              : "animate-in fade-in slide-in-from-left-4 duration-300"
+          }`}
+        >
           <div className="mb-2">
             <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
               {currentQ.category}
