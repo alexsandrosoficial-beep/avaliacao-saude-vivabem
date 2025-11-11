@@ -259,19 +259,19 @@ const Quiz = () => {
 
         <Card 
           key={currentQuestion}
-          className={`p-8 shadow-medium bg-gradient-card ${
+          className={`p-10 shadow-elevated bg-white border-2 border-primary/10 relative overflow-hidden ${
             animationDirection === "forward" 
               ? "animate-slide-in-from-right" 
               : "animate-slide-in-from-left"
           }`}
         >
           <div className="mb-2">
-            <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-4 py-1.5 bg-gradient-primary text-white text-sm font-semibold rounded-full mb-6 shadow-medium">
               {currentQ.category}
             </span>
           </div>
           
-          <h1 className="text-2xl font-bold text-foreground mb-8">{currentQ.question}</h1>
+          <h1 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-10 leading-tight">{currentQ.question}</h1>
 
           <RadioGroup value={answers[currentQ.id]} onValueChange={handleAnswer}>
             <div className="space-y-4">
@@ -286,17 +286,17 @@ const Quiz = () => {
                     />
                     <Label
                       htmlFor={option.value}
-                      className={`flex items-center justify-between cursor-pointer p-4 rounded-lg border-2 transition-all ${
+                      className={`flex items-center justify-between cursor-pointer p-5 rounded-xl border-2 transition-all duration-200 ${
                         isSelected
-                          ? "border-primary bg-primary/10 shadow-md"
-                          : "border-border hover:border-primary/50 hover:bg-accent/50"
+                          ? "border-primary bg-gradient-primary text-white shadow-medium scale-[1.02]"
+                          : "border-border hover:border-primary/50 hover:bg-primary/5 hover:shadow-card"
                       }`}
                     >
-                      <span className={isSelected ? "font-semibold text-primary" : ""}>
+                      <span className={`font-medium ${isSelected ? "text-white" : "text-foreground"}`}>
                         {option.label}
                       </span>
                       {isSelected && (
-                        <CheckCircle2 className="w-5 h-5 text-primary animate-in zoom-in-50 duration-200" />
+                        <CheckCircle2 className="w-5 h-5 text-white animate-in zoom-in-50 duration-200" />
                       )}
                     </Label>
                   </div>
@@ -305,12 +305,12 @@ const Quiz = () => {
             </div>
           </RadioGroup>
 
-          <div className="flex gap-4 mt-8">
+          <div className="flex gap-4 mt-10">
             <Button
               variant="outline"
               onClick={handleBack}
               disabled={currentQuestion === 0}
-              className="flex-1"
+              className="flex-1 h-12 font-semibold border-2 hover:bg-muted"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Voltar
@@ -318,7 +318,7 @@ const Quiz = () => {
             <Button
               onClick={handleNext}
               disabled={!answers[currentQ.id]}
-              className="flex-1"
+              className="flex-1 h-12 bg-gradient-primary shadow-medium hover:shadow-elevated font-semibold"
             >
               {currentQuestion === questions.length - 1 ? "Ver Resultados" : "Próxima"}
               <ArrowRight className="w-4 h-4 ml-2" />

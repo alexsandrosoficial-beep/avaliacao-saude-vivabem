@@ -8,25 +8,27 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 150 30% 96%;
-    --foreground: 160 10% 15%;
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 160 10% 15%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 160 10% 15%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 150 60% 48%;
+    --primary: 156 73% 42%;
     --primary-foreground: 0 0% 100%;
+    --primary-light: 156 73% 65%;
+    --primary-dark: 156 73% 30%;
 
-    --secondary: 195 65% 55%;
+    --secondary: 199 89% 48%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 150 25% 94%;
-    --muted-foreground: 160 10% 45%;
+    --muted: 220 13% 95%;
+    --muted-foreground: 220 9% 46%;
 
-    --accent: 35 90% 60%;
+    --accent: 24 95% 53%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -38,17 +40,20 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
-    --gradient-hero: linear-gradient(135deg, hsl(150 70% 90% / 0.9) 0%, hsl(195 70% 90% / 0.7) 50%, hsl(280 60% 92% / 0.5) 100%);
-    --gradient-wellness: radial-gradient(circle at 20% 50%, hsl(150 60% 48% / 0.2) 0%, transparent 50%), 
-                         radial-gradient(circle at 80% 80%, hsl(195 65% 55% / 0.2) 0%, transparent 50%),
-                         radial-gradient(circle at 40% 90%, hsl(35 90% 60% / 0.15) 0%, transparent 40%);
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 100% / 0.95), hsl(150 40% 98% / 1));
-    --gradient-quiz: linear-gradient(180deg, hsl(150 60% 96%) 0%, hsl(195 60% 97%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(156 73% 96%) 0%, hsl(199 89% 96%) 50%, hsl(270 60% 97%) 100%);
+    --gradient-wellness: radial-gradient(circle at 20% 50%, hsl(156 73% 42% / 0.12) 0%, transparent 50%), 
+                         radial-gradient(circle at 80% 80%, hsl(199 89% 48% / 0.12) 0%, transparent 50%),
+                         radial-gradient(circle at 40% 90%, hsl(24 95% 53% / 0.08) 0%, transparent 40%);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100% / 1), hsl(156 73% 99% / 0.8));
+    --gradient-quiz: linear-gradient(135deg, hsl(156 73% 98%) 0%, hsl(199 89% 98%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(156 73% 42%) 0%, hsl(156 73% 52%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(24 95% 53%) 0%, hsl(24 95% 63%) 100%);
     
-    --shadow-soft: 0 4px 24px hsl(150 60% 48% / 0.12);
-    --shadow-medium: 0 8px 40px hsl(150 60% 48% / 0.18);
-    --shadow-glow: 0 0 50px hsl(150 60% 48% / 0.25);
-    --shadow-card: 0 2px 16px hsl(150 60% 48% / 0.08);
+    --shadow-soft: 0 4px 20px hsl(156 73% 42% / 0.08), 0 2px 8px hsl(156 73% 42% / 0.04);
+    --shadow-medium: 0 10px 40px hsl(156 73% 42% / 0.12), 0 4px 16px hsl(156 73% 42% / 0.08);
+    --shadow-glow: 0 0 60px hsl(156 73% 42% / 0.2), 0 0 30px hsl(156 73% 42% / 0.1);
+    --shadow-card: 0 2px 12px hsl(220 13% 60% / 0.06), 0 1px 4px hsl(220 13% 60% / 0.04);
+    --shadow-elevated: 0 20px 60px hsl(156 73% 42% / 0.15), 0 8px 24px hsl(156 73% 42% / 0.1);
     
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -131,11 +136,11 @@ All colors MUST be HSL.
   .wellness-background::after {
     content: '';
     position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, hsl(150 60% 48% / 0.08) 0%, transparent 70%);
+    top: -10%;
+    right: -5%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, hsl(156 73% 42% / 0.06) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
     animation: float 20s ease-in-out infinite;
