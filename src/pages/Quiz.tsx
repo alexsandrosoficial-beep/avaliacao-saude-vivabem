@@ -261,8 +261,8 @@ const Quiz = () => {
           key={currentQuestion}
           className={`p-8 shadow-medium bg-gradient-card ${
             animationDirection === "forward" 
-              ? "animate-in fade-in slide-in-from-right-4 duration-300" 
-              : "animate-in fade-in slide-in-from-left-4 duration-300"
+              ? "animate-slide-in-from-right" 
+              : "animate-slide-in-from-left"
           }`}
         >
           <div className="mb-2">
