@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
-import { Heart, Sparkles, TrendingUp, Shield } from "lucide-react";
+import { Heart, Sparkles, TrendingUp, Shield, Star, Quote } from "lucide-react";
 import { playClickSound } from "@/utils/sounds";
 
 const Index = () => {
@@ -81,6 +81,83 @@ const Index = () => {
               <p className="text-muted-foreground leading-relaxed">
                 Produtos e dicas especialmente selecionados para você
               </p>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 px-4 bg-gradient-to-b from-background to-muted/20">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-center text-foreground mb-4">
+            O Que Dizem Nossos Usuários
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Milhares de pessoas já transformaram suas vidas com nossa plataforma
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="p-6 shadow-card hover:shadow-medium transition-all duration-300 animate-fade-in bg-gradient-card border-border/50 relative overflow-hidden">
+              <Quote className="absolute top-4 right-4 w-8 h-8 text-primary/10" />
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                ))}
+              </div>
+              <p className="text-foreground/90 mb-4 leading-relaxed italic">
+                "Incrível! Em apenas 2 meses seguindo as recomendações, minha qualidade de sono melhorou 80%. Nunca me senti tão bem!"
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                  <span className="font-display font-bold text-primary">MR</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Maria Rodrigues</p>
+                  <p className="text-sm text-muted-foreground">Designer, 32 anos</p>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-6 shadow-card hover:shadow-medium transition-all duration-300 animate-fade-in bg-gradient-card border-border/50 relative overflow-hidden" style={{ animationDelay: "0.1s" }}>
+              <Quote className="absolute top-4 right-4 w-8 h-8 text-secondary/10" />
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-secondary text-secondary" />
+                ))}
+              </div>
+              <p className="text-foreground/90 mb-4 leading-relaxed italic">
+                "A avaliação foi super precisa! Identifiquei pontos que precisava melhorar e recebi dicas práticas. Muito recomendado!"
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center">
+                  <span className="font-display font-bold text-secondary">JS</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">João Silva</p>
+                  <p className="text-sm text-muted-foreground">Engenheiro, 28 anos</p>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-6 shadow-card hover:shadow-medium transition-all duration-300 animate-fade-in bg-gradient-card border-border/50 relative overflow-hidden" style={{ animationDelay: "0.2s" }}>
+              <Quote className="absolute top-4 right-4 w-8 h-8 text-accent/10" />
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-accent text-accent" />
+                ))}
+              </div>
+              <p className="text-foreground/90 mb-4 leading-relaxed italic">
+                "Finalmente encontrei uma plataforma que entende minhas necessidades. As dicas personalizadas fizeram toda diferença!"
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+                  <span className="font-display font-bold text-accent">AC</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Ana Costa</p>
+                  <p className="text-sm text-muted-foreground">Professora, 45 anos</p>
+                </div>
+              </div>
             </Card>
           </div>
         </div>
