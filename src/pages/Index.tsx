@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
-import { Heart, Sparkles, TrendingUp, Shield, Star, Quote } from "lucide-react";
+import { Heart, Sparkles, TrendingUp, Shield, Star, Quote, BookOpen } from "lucide-react";
 import { playClickSound } from "@/utils/sounds";
 
 const Index = () => {
@@ -53,7 +53,10 @@ const Index = () => {
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="p-8 text-center shadow-card hover:shadow-medium transition-all duration-300 animate-fade-in bg-gradient-card border-border/50">
+            <Card 
+              className="p-8 text-center shadow-card hover:shadow-medium transition-all duration-300 animate-fade-in bg-gradient-card border-border/50 cursor-pointer"
+              onClick={() => navigate("/quiz")}
+            >
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
                 <TrendingUp className="w-8 h-8 text-primary" />
               </div>
@@ -73,13 +76,17 @@ const Index = () => {
               </p>
             </Card>
 
-            <Card className="p-8 text-center shadow-card hover:shadow-medium transition-all duration-300 animate-fade-in bg-gradient-card border-border/50" style={{ animationDelay: "0.2s" }}>
+            <Card 
+              className="p-8 text-center shadow-card hover:shadow-medium transition-all duration-300 animate-fade-in bg-gradient-card border-border/50 cursor-pointer" 
+              style={{ animationDelay: "0.2s" }}
+              onClick={() => navigate("/blog")}
+            >
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-4">
-                <Shield className="w-8 h-8 text-accent" />
+                <BookOpen className="w-8 h-8 text-accent" />
               </div>
-              <h3 className="text-xl font-display font-bold text-foreground mb-3">Soluções Personalizadas</h3>
+              <h3 className="text-xl font-display font-bold text-foreground mb-3">Artigos e Dicas</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Produtos e dicas especialmente selecionados para você
+                Conteúdo educativo sobre saúde e bem-estar
               </p>
             </Card>
           </div>
