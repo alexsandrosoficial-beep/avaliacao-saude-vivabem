@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { Heart, Sparkles, TrendingUp, Shield, Star, Quote, BookOpen, CheckCircle2, Users, Award } from "lucide-react";
-import { playClickSound } from "@/utils/sounds";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -49,10 +48,7 @@ const Index = () => {
           
             <Button
               size="lg"
-              onClick={() => {
-                playClickSound();
-                navigate("/quiz");
-              }}
+              onClick={() => navigate("/quiz")}
               className="shadow-elevated text-lg px-10 py-7 h-auto bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105 font-semibold"
             >
               Começar Avaliação de Saúde
@@ -241,10 +237,7 @@ const Index = () => {
                 </p>
                 <Button
                   size="lg"
-                  onClick={() => {
-                    playClickSound();
-                    navigate("/quiz");
-                  }}
+                  onClick={() => navigate("/quiz")}
                   className="bg-white text-primary hover:bg-white/90 shadow-elevated hover:shadow-glow transition-all duration-300 transform hover:scale-105 text-lg px-10 py-7 h-auto font-semibold"
                 >
                   Iniciar Avaliação Gratuita
